@@ -34,7 +34,7 @@ The Employee Leave Management System (ELMS) is a robust PHP-based application th
 ## 🛠️ Technology Stack
 
 - **Backend**: PHP 8.2+
-- **Database**: MySQL/MariaDB
+- **Database**: MySQL
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Server**: Apache (via XAMPP)
 - **Architecture**: MVC pattern with modular design

@@ -38,29 +38,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
         
         // Handle profile picture upload
         $profile_picture = $user['profile_picture']; // Keep existing if no new upload
-        
+
         if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
-            $upload_dir = '../uploads/profiles/';
+            $upload_dir = __DIR__ . '/../uploads/profiles/';
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, 0755, true);
             }
-            
+
             $file_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
             $filename = 'profile_' . $user_id . '_' . time() . '.' . $file_extension;
             $target_path = $upload_dir . $filename;
-            
+
             // Validate file type
             $allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'jfif', 'bmp', 'tiff'];
             if (in_array(strtolower($file_extension), $allowed_types)) {
-                if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_path)) {
-                    $profile_picture = $target_path;
-                    
-                    // Delete old profile picture if exists and it's not the default
-                    if ($user['profile_picture'] && file_exists($user['profile_picture']) && 
-                        !str_contains($user['profile_picture'], 'default-avatar')) {
-                        unlink($user['profile_picture']);
+                // Validate file size (2MB limit)
+                if ($_FILES['profile_picture']['size'] <= 2 * 1024 * 1024) {
+                    if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target_path)) {
+                        // Store only the filename, not the full path
+                        $profile_picture = $filename;
+
+                        // Delete old profile picture if exists and it's not the default
+                        if ($user['profile_picture'] && file_exists($upload_dir . $user['profile_picture']) &&
+                            !str_contains($user['profile_picture'], 'default-avatar')) {
+                            unlink($upload_dir . $user['profile_picture']);
+                        }
+                    } else {
+                        $error = 'Failed to upload profile picture. Please try again.';
                     }
+                } else {
+                    $error = 'Profile picture must be less than 2MB in size.';
                 }
+            } else {
+                $error = 'Invalid file type. Please upload a valid image file (jpg, jpeg, png, gif, webp, svg, jfif, bmp, tiff).';
             }
         }
         
@@ -158,9 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                 <div class="profile-info">
                     <div class="profile-avatar-section">
                         <div class="profile-avatar">
-                            <img src="<?php echo $user['profile_picture'] ?: '../assets/default-avatar.png'; ?>" 
-                                 alt="Profile Picture" 
-                                 onerror="this.src='../assets/default-avatar.png'">
+                            <img src="<?php echo $user['profile_picture'] ? 'uploads/profiles/' . $user['profile_picture'] : 'assets/default-avatar.png'; ?>"
+                                 alt="Profile Picture"
+                                 onerror="this.src='assets/default-avatar.png'">
                         </div>
                         <div class="profile-details">
                             <h3><?php echo htmlspecialchars($user['name']); ?></h3>
@@ -319,9 +329,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['change_password'])) {
                 <div class="form-group text-center">
                     <div class="avatar-upload">
                         <div class="avatar-preview">
-                            <img src="<?php echo $user['profile_picture'] ?: '../assets/default-avatar.png'; ?>" 
-                                 alt="Profile Preview" 
-                                 onerror="this.src='../assets/default-avatar.png'"
+                            <img src="<?php echo $user['profile_picture'] ? 'uploads/profiles/' . $user['profile_picture'] : 'assets/default-avatar.png'; ?>"
+                                 alt="Profile Preview"
+                                 onerror="this.src='assets/default-avatar.png'"
                                  id="avatarPreview">
                         </div>
                         <label for="profile_picture" class="avatar-upload-btn">

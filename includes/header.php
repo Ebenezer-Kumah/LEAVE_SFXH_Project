@@ -75,7 +75,7 @@ $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="dropdown">
             <button class="dropdown-toggle">
                 <?php if ($profile_picture): ?>
-                    <img src="<?php echo htmlspecialchars($profile_picture); ?>"
+                    <img src="uploads/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
                          alt="Profile Picture"
                          class="header-profile-img"
                          onerror="this.src='assets/default-avatar.png'">

@@ -29,7 +29,7 @@ $sidebar_collapsed = isset($_COOKIE['sidebar_collapsed']) && $_COOKIE['sidebar_c
     <div class="sidebar-user">
         <div class="user-avatar">
             <?php if ($profile_picture): ?>
-                <img src="<?php echo htmlspecialchars($profile_picture); ?>"
+                <img src="uploads/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
                      alt="Profile Picture"
                      onerror="this.src='assets/default-avatar.png'">
             <?php else: ?>

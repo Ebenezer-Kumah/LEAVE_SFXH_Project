@@ -32,12 +32,12 @@
         <div class="footer-section">
             <h4>Contact Info</h4>
             <div class="contact-info">
-                <p><i class="fas fa-map-marker-alt"></i> PO Box 43 Assin-Foso, Ghana </p>
-                <p><a href="https://www.google.com/maps/place/St.+Francis+Xavier+Hospital/@5.4906893,-0.7135283,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf9b2f7e2f2d7d:0x8c6e3f5f8a5c6e0!8m2!3d5.4906844!4d-0.7113396!16s%2Fg%2F11c52_5_8y"><i class="fas fa-map-marked-alt"></i> 120 Mankessim - Kumasi Rd, Fosu</a></p>
-                <p><i class="fas fa-globe"></i> www.stfrancishsc.org </p>
-                <p><i class="fas fa-phone"></i> +233 24 493 4307 </p>
-                <p><i class="fas fa-envelope"></i>  sisteric@stfrancishsc.org </p>
-                <p><i class="fas fa-clock"></i> 24/7 </p>
+                <p><a href="https://www.google.com/maps/place/St.+Francis+Xavier+Hospital/@5.4906893,-0.7135283,17z" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-marker-alt"></i> PO Box 43 Assin-Foso, Ghana</a></p>
+                <p><a href="https://www.google.com/maps/place/St.+Francis+Xavier+Hospital/@5.4906893,-0.7135283,17z/data=!3m1!4b1!4m6!3m5!1s0xfdf9b2f7e2f2d7d:0x8c6e3f5f8a5c6e0!8m2!3d5.4906844!4d-0.7113396!16s%2Fg%2F11c52_5_8y" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-marked-alt"></i> 120 Mankessim - Kumasi Rd, Fosu</a></p>
+                <p><a href="https://www.stfrancishsc.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> www.stfrancishsc.org</a></p>
+                <p><a href="tel:+233244934307"><i class="fas fa-phone"></i> +233 24 493 4307</a></p>
+                <p><a href="mailto:sisteric@stfrancishsc.org"><i class="fas fa-envelope"></i> sisteric@stfrancishsc.org</a></p>
+                <p><i class="fas fa-clock"></i> 24/7</p>
             </div>
         </div>
         
@@ -68,23 +68,41 @@
 </footer>
 
 <style>
-/* Footer base - nice, modern, accessible */
+/* Footer base - professional, modern, accessible */
+:root {
+    --primary-color: #8c2d3c;
+    --primary-dark: #7a2433;
+    --primary-light: #a13546;
+    --footer-bg-start: rgba(25, 30, 45, 0.98);
+    --footer-bg-end: rgba(15, 20, 35, 0.99);
+    --footer-text: #f0f4f8;
+    --footer-muted: rgba(240, 244, 248, 0.85);
+    --footer-quiet: rgba(240, 244, 248, 0.7);
+    --accent: #a13546;
+    --accent-hover: #b84556;
+    --success-color: #2ecc71;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 .footer {
-    background: linear-gradient(180deg, rgba(10,25,47,0.95), rgba(5,15,30,0.98));
-    color: #e6eef8;
+    background: linear-gradient(180deg, var(--footer-bg-start), var(--footer-bg-end));
+    color: var(--footer-text);
     margin-top: auto;
     padding-top: 24px;
-    box-shadow: 0 -6px 24px rgba(2, 8, 23, 0.5);
-    border-top: 1px solid rgba(255,255,255,0.03);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    border-top: 1px solid var(--border-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    position: relative;
+    z-index: 10;
 }
 
 /* Layout */
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 28px;
-    padding: 42px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px 24px;
     max-width: 1200px;
     margin: 0 auto;
     align-items: start;
@@ -92,22 +110,36 @@
 
 /* Section styling */
 .footer-section {
-    padding: 4px 6px;
-    transition: transform 0.28s ease, opacity 0.28s ease;
+    padding: 5px 10px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
+
 .footer-section:hover {
-    transform: translateY(-4px);
-    opacity: 0.98;
+    transform: translateY(-3px);
+    opacity: 1;
 }
 
 /* Headings */
 .footer-section h4 {
-    color: #8bd0ff;
-    margin-bottom: 14px;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.4px;
+    color: var(--primary-light);
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
+    position: relative;
+    padding-bottom: 10px;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
 }
 
 /* Logo area */
@@ -117,90 +149,99 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-size: 1.25rem;
     font-weight: 700;
 }
+
 .footer-logo img {
-    width: 150px; height: 50px;
+    width: 150px;
+    height: 50px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(3, 16, 35, 0.6);
-    border: 1px solid rgba(255,255,255,0.04);
-}
-.footer-logo span {
-    color: #f4fbff;
-    font-size: 1rem;
-    line-height: 1;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
 }
 
-/* Small utility */
-:root {
-    --footer-muted: rgba(230,238,248,0.78);
-    --footer-quiet: rgba(230,238,248,0.64);
-    --accent: #3ec7ff;
+.footer-logo span {
+    color: var(--footer-text);
+    font-size: 1.05rem;
+    line-height: 1.2;
 }
+
 .footer-description {
     line-height: 1.6;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     color: var(--footer-muted);
     font-size: 0.95rem;
 }
 
-/* Make social icons tidy */
+/* Social icons */
 .footer-social {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 6px;
+    gap: 12px;
+    margin-top: 8px;
 }
+
 .social-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255,255,255,0.04);
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
-    color: #fff;
+    color: var(--footer-text);
     text-decoration: none;
-    transition: transform 0.22s ease, background-color 0.22s ease;
+    transition: all 0.25s ease;
 }
+
 .social-link:hover,
 .social-link:focus {
-    background-color: var(--accent);
-    transform: translateY(-3px) scale(1.03);
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     outline: none;
 }
 
-/* Ensure lists and links are readable */
+/* Links styling */
 .footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.footer-links li {
-    margin-bottom: 10px;
-}
 
+.footer-links li {
+    margin-bottom: 12px;
+}
 
 .footer-links a {
     color: var(--footer-quiet);
     text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: start;
-    padding-left: 75px;
     gap: 10px;
-    transition: color 0.22s ease, transform 0.18s ease;
+    transition: all 0.2s ease;
+    padding: 8px 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
 }
+
+.footer-links a i {
+    color: var(--primary-light);
+    width: 16px;
+    text-align: center;
+    font-size: 1rem;
+}
+
 .contact-info a:hover,
 .contact-info a:focus,
 .footer-links a:hover,
 .footer-links a:focus {
-    color: var(--accent);
-    transform: translateX(4px);
+    color: var(--footer-text);
+    transform: translateX(3px);
 }
 
 /* Contact & system info */
@@ -208,17 +249,28 @@
 .system-info p {
     display: flex;
     align-items: center;
-    justify-content: start;
     gap: 10px;
-    padding-left: 20px;
     margin-bottom: 12px;
     color: var(--footer-quiet);
     font-size: 0.95rem;
+    padding: 3px 0;
 }
+
 .contact-info i,
 .system-info i {
-    color: var(--accent);
-    width: 20px;
+    color: var(--primary-light);
+    width: 18px;
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--footer-quiet);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+    color: var(--footer-text);
 }
 
 /* Visual status */
@@ -227,68 +279,157 @@
     align-items: center;
     gap: 8px;
     margin-top: 12px;
-    padding: 8px;
-    margin-left: 20px;
+    padding: 8px 12px;
     width: fit-content;
-    background-color: rgba(6, 132, 100, 0.08);
+    background-color: rgba(46, 204, 113, 0.1);
     border-radius: 6px;
-    border-left: 3px solid rgba(60, 200, 140, 0.9);
+    border-left: 3px solid var(--success-color);
 }
+
 .status-dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     display: inline-block;
-    box-shadow: 0 0 0 4px rgba(60,200,140,0.12);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
 }
-.status-dot.online { background-color: #3cdf9a; }
+
+.status-dot.online {
+    background-color: var(--success-color);
+}
 
 /* Footer bottom */
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.04);
-    padding: 18px 0 28px;
+    border-top: 1px solid var(--border-color);
+    padding: 20px 0;
     margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
 }
+
 .footer-bottom-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 24px;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 15px;
 }
+
 .footer-bottom p {
     color: var(--footer-muted);
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
+
 .footer-bottom-links {
     display: flex;
-    gap: 18px;
+    gap: 20px;
 }
+
 .footer-bottom-links a {
     color: var(--footer-quiet);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.18s ease;
+    transition: color 0.2s ease;
+    position: relative;
 }
+
+.footer-bottom-links a:not(:last-child)::after {
+    content: '•';
+    position: absolute;
+    right: -12px;
+    color: var(--footer-quiet);
+    opacity: 0.5;
+}
+
 .footer-bottom-links a:hover,
-.footer-bottom-links a:focus { color: var(--accent); }
+.footer-bottom-links a:focus {
+    color: var(--primary-light);
+}
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    .footer-content { padding: 28px 18px; grid-auto-rows: auto; }
-    .footer-bottom-content { flex-direction: column; text-align: center; gap: 8px; }
-    .contact-info p, .system-info p { justify-content: center; }
-    .footer-logo { justify-content: center; }
-    .footer-social { justify-content: center; }
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        padding: 35px 20px;
+    }
 }
 
-@media (max-width: 420px) {
-    .footer-content { padding: 20px 12px; gap: 18px; }
-    .footer-logo img { width: 44px; height: 44px; }
-    .footer-section h4 { font-size: 1rem; }
+@media (max-width: 768px) {
+    .footer-content {
+        padding: 30px 18px;
+        grid-auto-rows: auto;
+        gap: 30px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 0 18px;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .footer-section h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+    }
+    
+    .footer-section h4,
+    .contact-info p,
+    .system-info p {
+        text-align: center;
+    }
+    
+    .contact-info p,
+    .system-info p {
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        justify-content: center;
+    }
+    
+    .status-indicator {
+        margin: 12px auto 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        padding: 25px 15px;
+        gap: 25px;
+    }
+    
+    .footer-logo {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo img {
+        width: 120px;
+        height: 40px;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+    
+    .footer-bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-bottom-links a:not(:last-child)::after {
+        display: none;
+    }
 }
 </style>
 

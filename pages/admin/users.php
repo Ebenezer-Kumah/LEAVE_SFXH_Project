@@ -478,7 +478,7 @@ document.querySelectorAll('.alert-close').forEach(button => {
 
 .user-info {
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 10px;
 }
 

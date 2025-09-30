@@ -21,10 +21,11 @@ $sidebar_collapsed = isset($_COOKIE['sidebar_collapsed']) && $_COOKIE['sidebar_c
             <img src="assets/logo's.png" alt="St. Francis Xavier Hospital Logo">
             <span class="org-name">St. Francis Xavier Hospital</span>
         </div>
-        <button id="sidebar-toggle" class="sidebar-toggle">
-            <i class="fas fa-chevron-left"></i>
-        </button>
     </div>
+    
+    <button id="sidebar-toggle" class="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </button>
     
     <div class="sidebar-user">
         <div class="user-avatar">
@@ -43,6 +44,36 @@ $sidebar_collapsed = isset($_COOKIE['sidebar_collapsed']) && $_COOKIE['sidebar_c
     </div>
     
     <style>
+    .sidebar-header {
+        width: 250px;
+        background-color: #8c2d3c;
+        color: #ffffff;
+        padding: 15px;
+        border-bottom: 1px solid #34495e;
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+    }
+    
+    .sidebar-header .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar-header .logo img {
+        max-width: 80px;
+        margin-bottom: 10px;
+    }
+    
+    .sidebar-header .org-name {
+        display: block;
+        line-height: 1.2;
+    }
+    
     .user-avatar img {
         width: 40px;
         height: 40px;
